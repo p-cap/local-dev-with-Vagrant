@@ -1,0 +1,26 @@
+$script = <<-SCRIPT
+# Please copy the correct link below to make sure you have the right binary
+wget https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.0.30/xampp-linux-x64-8.0.30-0-installer.run
+SCRIPT
+
+Vagrant.configure("2") do |config|
+  config.vm.network "private_network", ip: "<fill me in>"
+  config.vm.provision "shell", inline: $script
+  config.vm.hostname = "<fill-me-in>"
+
+  # I personally prefer ubuntu/jammy64 
+  # Use the link below for more boxes
+  # https://app.vagrantup.com/boxes/search
+  config.vm.box = "ubuntu/jammy64"
+  config.vm.define "<fill-me-in>"
+  
+  # as prerequisite, you would need a layer 2 hypervisor
+  # VMWare, VirtualBox, Docker are a few
+  # https://developer.hashicorp.com/vagrant/docs/providers 
+  config.vm.provider "<fill-me-in>" do |vb|
+     vb.memory = "6168"
+     vb.cpus = 2 
+     vb.name = "<fill-me-in>"
+  end 
+end
+
