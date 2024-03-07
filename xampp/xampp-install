@@ -13,6 +13,7 @@ sudo vi /opt/lampp/etc/extra/httpd-xampp.conf
     AllowOverride AuthConfig Limit
     # Add the IP you have assigned 
     # yours might be different
-    Require ip 10.10.35
+    # the IP below is more of a /16 subnet
+    Require ip XX.XX
     ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
 </Directory>
