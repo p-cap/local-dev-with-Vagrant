@@ -1,0 +1,18 @@
+# Download the run file
+# Below is includes in the Vagrantfile
+# wget https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.0.30/xampp-linux-x64-8.0.30-0-installer.run
+
+# change the permissions to .run file
+chmod 700 xampp-linux-x64-8.0.30-0-installer.run
+
+# config file to chane to have direct access to phpmyadmin
+sudo vi /opt/lampp/etc/extra/httpd-xampp.conf
+
+# below is the config needed whitelist your assigned vagrant private IP
+<Directory "/opt/lampp/phpmyadmin">
+    AllowOverride AuthConfig Limit
+    # Add the IP you have assigned 
+    # yours might be different
+    Require ip 10.10.35
+    ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
+</Directory>
