@@ -16,3 +16,6 @@ sudo vi /opt/lampp/etc/extra/httpd-xampp.conf
     Require ip 10.10.35
     ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
 </Directory>
+
+# restart the server
+sudo /opt/lampp/xampp restart
