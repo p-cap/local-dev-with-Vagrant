@@ -1,25 +1,28 @@
+$ip_for_priv="<fill-me>"
+$name = "<fill-me>"
+$provider = "<fill-me>"
+
 $script = <<-SCRIPT
 # Insert you're init scripts here
 SCRIPT
 
 Vagrant.configure("2") do |config|
-  config.vm.network "private_network", ip: "<fill me in>"
+  config.vm.network "private_network", ip: $ip_for_priv
   config.vm.provision "shell", inline: $script
-  config.vm.hostname = "<fill-me-in>"
+  config.vm.hostname = $name
 
   # I personally prefer ubuntu/jammy64 
   # Use the link below for more boxes
   # https://app.vagrantup.com/boxes/search
-  config.vm.box = "ubuntu/jammy64"
-  config.vm.define "<fill-me-in>"
+  config.vm.box = "hashicorp/precise64"
+  config.vm.define $name
   
   # as prerequisite, you would need a layer 2 hypervisor
   # VMWare, VirtualBox, Docker are a few
   # https://developer.hashicorp.com/vagrant/docs/providers 
-  config.vm.provider "<fill-me-in>" do |vb|
+  config.vm.provider $provider do |vb|
      vb.memory = "6168"
      vb.cpus = 2 
-     vb.name = "<fill-me-in>"
+     #vb.name = $name
   end 
 end
-
